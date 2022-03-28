@@ -1547,6 +1547,8 @@ func (s *infoSuite) TestStopModeTypeKillMode(c *C) {
 		{"sigusr1-all", true},
 		{"sigusr2", false},
 		{"sigusr2-all", true},
+		{"sigint", false},
+		{"sigint-all", true},
 	} {
 		c.Check(snap.StopModeType(t.stopMode).KillAll(), Equals, t.killall, Commentf("wrong KillAll for %v", t.stopMode))
 	}
@@ -1566,6 +1568,8 @@ func (s *infoSuite) TestStopModeTypeKillSignal(c *C) {
 		{"sigusr1-all", "SIGUSR1"},
 		{"sigusr2", "SIGUSR2"},
 		{"sigusr2-all", "SIGUSR2"},
+		{"sigint", "SIGINT"},
+		{"sigint-all", "SIGINT"},
 	} {
 		c.Check(snap.StopModeType(t.stopMode).KillSignal(), Equals, t.killSig)
 	}
